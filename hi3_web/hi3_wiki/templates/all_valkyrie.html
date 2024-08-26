@@ -1,0 +1,15 @@
+{% extends "master.html" %}
+
+{% block title %}
+    List of all Valkyries
+{% endblock %}
+
+{% block content %}
+<p><a href="/">HOME</a></p>
+<h1>Valkyrie</h1>
+    <ul>
+        {% for x in my_valks %}
+            <li><a href="details/{{ x.valkyrie_id }}">{{ x.valkyrie_name }} </a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

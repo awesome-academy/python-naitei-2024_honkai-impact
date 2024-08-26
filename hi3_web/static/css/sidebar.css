@@ -1,0 +1,61 @@
+body, ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sidebar container */
+.sidebar {
+    width: 200px;
+    background-color: #1C1D21;
+    height: 100vh;
+    padding-top: 20px;
+    font-family: Arial, sans-serif;
+    position: fixed;
+}
+
+/* Navigation list */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    width: 100%;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Icons */
+.sidebar ul li a .sidebar-icon {
+    width: 20px; /* Fixed width for icons */
+    height: 20px; /* Fixed height for icons */
+    margin-right: 15px;
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.sidebar ul li a .sidebarmain-icon {
+    align-items: center;
+    justify-content: center;
+}
+
+/* Active link */
+.sidebar ul li a.active, .sidebar ul li a:hover {
+    background-color: #2C2D33;
+}
+
+/* Subsection divider
+.sidebar ul li.divider {
+    border-top: 1px solid #444;
+    margin: 15px 0;
+} */

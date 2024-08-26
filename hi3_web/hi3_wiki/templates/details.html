@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Details about {{ my_valks.valkyrie_name }} 
+{% endblock %}
+
+{% block content %}
+    <h1>{{ my_valks.valkyrie_name }} {{ my_valks.valkyrie_name }}</h1>
+    
+    <p>CN Voice Actor: {{ my_valks.cn_va }}</p>
+    <p>JP Voice Actor: {{ my_valks.jp_va }}</p>
+
+    <p>Back to <a href="/valkyrie">Valkyries</a></p>
+
+{% endblock %}
+
