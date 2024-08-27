@@ -1,0 +1,58 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}Introduction{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/introduction.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="section">
+        <div class="section-title">
+            <span class="bullet"></span> INTRODUCTION TO THE GAME
+        </div>
+        <p class="section-text">
+            <strong>Honkai Impact 3 is a action RPG</strong> taking many 
+            insperations from action game like Devil May Cry series, Bayonetta 
+            and Metal Gear Rising: Revengeance, etc. It has 2 types of main 
+            contents, story mode and end game challenges. Story mode is a long, 
+            complex story, mainly as the form of a visual novel game while end 
+            game challenges are where the most combat happened. Aside from that, 
+            there are also open-world mode and various events
+        </p>
+        <p class="section-text">
+            We will not talk about end game challenges in this because all of 
+            them have dedicated guides. There are 3 main end game challenges:
+            <a href="/elyrealm/" class="link-elyrealm">Elysian Realm</a>, 
+            <a href="/abyss/" class="link-abyss">Abyss</a>, 
+            <a href="/ma/" class="link-ma">Memorial Arena</a>
+        </p>
+    </div>
+    <div class="section">
+        <div class="section-title">
+            <span class="bullet"></span> PLAYABLE CHARACTERS
+        </div>
+        <p class="section-text">
+            This is the first confusing part of this game. 
+        </p>
+        <div class="subsection">
+            <strong>Character Stats</strong>
+            <p class="section-text">
+                
+            </p>
+            <ul>
+                <li><strong>HP</strong> - How much damage a Character can take before falling in combat</li>
+                <li><strong>ATK</strong> - How much damage a Character deals</li>
+                <li><strong>DEF</strong> - Reduces the damage a Character takes</li>
+                <li><strong>Speed</strong> - Determines how fast and how often a Character will act in combat</li>
+                <li><strong>Crit Rate</strong> - How likely it is for the Character to land a critical hit</li>
+                <li><strong>Crit DMG</strong> - Determines the damage multiplier when landing a critical hit</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+
