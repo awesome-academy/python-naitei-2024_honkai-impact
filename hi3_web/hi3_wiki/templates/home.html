@@ -1,0 +1,95 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+
+<div class="home-content">
+    <div class="header-section">
+        <img src="{% static 'img/172466098964301525.png' %}">
+        <div class="welcome-quote">Welcome to Honkai Impact 3 Guide and Database</div>
+    </div>
+    <div class="row">
+        <div class="card">
+            <a href="/introduction/" class="card-link">
+                <img src="{% static 'img/aichan_intro.jpg' %}">
+                <div class="card-content">
+                    <div class="card-title">Introduction to the game</div>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/overall-guide/" class="card-link">
+                <img src="{% static 'img/guide_icon.jpg' %}">
+                <div class="card-content">
+                    <div class="card-title">Overall Guide</div>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/team-build/" class="card-link">
+                <!-- <img src="{% static 'images/tier_list.jpg' %}" alt="Tier list"> -->
+                <div class="card-content">
+                    <div class="card-title">Team Builds</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card">
+            <a href="/valkyries/" class="card-link">
+                <img src="{% static 'img/HoF_valk.jpg' %}">
+                <div class="card-content">
+                    <div class="card-title">Valkyries</div>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/weapons/" class="card-link">
+                <img src="{% static 'img/weap_icon.jpg' %}">
+                <div class="card-content">
+                    <div class="card-title">Weapons</div>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/stigmatas/" class="card-link">
+                <img src="{% static 'img/stig_icon.jpg' %}">
+                <div class="card-content">
+                    <div class="card-title">Stigmatas</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card">
+            <a href="/elyrealm/" class="card-link">
+                <img src="{% static 'img/er_icon.jpg' %}">
+                <div class="card-content">
+                    <div class="card-title">Elysian Realm</div>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/abyss/" class="card-link">
+                <img src="{% static 'img/abyss_icon.jpg' %}">
+                <div class="card-content">
+                    <div class="card-title">Abyss</div>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="/ma/" class="card-link">
+                <img src="{% static 'img/ma_icon.jpg' %}">
+                <div class="card-content">
+                    <div class="card-title">Memorial Arena</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

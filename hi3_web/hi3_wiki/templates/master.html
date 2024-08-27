@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="/" class="sidebarmain">
+                        <img src="{% static 'img/sidebar_main.png' %}" alt="Top Icon" class="sidebarmain-icon">
+                    </a>
+                </li>
+                <!-- <li><a href="/" ><img src="{% static 'img/sidebar_main.png' %}" class="sidebarmain-icon"> </a></li> -->
+                <li><a href="/" ><img src="{% static 'img/home-page-white-icon.jpg' %}" class="sidebar-icon"> Home</a></li>
+                <li><a href="/valkyries/"><img src="{% static 'img/side_valk_icon.jpg' %}" class="sidebar-icon"> Valkyries</a></li>
+                <li><a href="/weapons/"><img src="{% static 'img/home-page-white-icon.jpg' %}" class="sidebar-icon"> Weapons</a></li>
+                <li><a href="/elyrealm/"><img src="{% static 'img/side_er_icon1.jpg' %}" class="sidebar-icon"> Elysian Realm</a></li>
+                <li><a href="/abyss/"><img src="{% static 'img/home-page-white-icon.jpg' %}" class="sidebar-icon"> Abyss</a></li>
+                <li><a href="/ma/"><img src="{% static 'img/home-page-white-icon.jpg' %}" class="sidebar-icon"> Memorial Arena</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
+
