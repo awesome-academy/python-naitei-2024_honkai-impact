@@ -1,0 +1,82 @@
+.section {
+    /* border-top: 2px solid #0082c9; */
+    padding-top: 40px;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.section-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 100%; /* Full width of the section-title */
+    height: 2px; /* Line thickness */
+    background-color: #FFFF00; /* Yellow color */
+    position: absolute;
+    bottom: 0; /* Aligns with the bottom of the .section-title */
+    left: 0;
+}
+
+.bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #0082c9;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.section-text {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+
+}
+
+.subsection {
+    margin-top: 20px;
+}
+
+.subsection ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.subsection li {
+    margin-bottom: 10px;
+}
+
+.link-elyrealm {
+    color: #E1BEE7; /* Example color for Elysian Realm */
+}
+
+.link-elyrealm:visited {
+    color: #E1BEE7; /* Same color after visit */
+}
+
+.link-abyss {
+    color: #D32F2F; /* Example color for Valkyries */
+}
+
+.link-abyss:visited {
+    color: #D32F2F; /* Same color after visit */
+}
+
+.link-ma {
+    color: #03A9F4; /* Example color for Weapons */
+}
+
+.link-ma:visited {
+    color: #03A9F4; /* Same color after visit */
+}
+
+

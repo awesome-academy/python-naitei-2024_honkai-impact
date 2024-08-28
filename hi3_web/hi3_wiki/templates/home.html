@@ -3,8 +3,11 @@
 
 {% block title %}Homepage{% endblock %}
 
-{% block content %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
+{% block content %}
 <div class="home-content">
     <div class="header-section">
         <img src="{% static 'img/172466098964301525.png' %}">
@@ -92,4 +95,5 @@
     </div>
 </div>
 {% endblock %}
+
 

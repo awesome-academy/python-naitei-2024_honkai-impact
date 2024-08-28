@@ -1,4 +1,19 @@
+/* global.css */
 body {
+    font-family: Arial, sans-serif;
     background-color: #23242A;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 10px;
 }
+
+.container {
+    display: flex;
+}
+
+.main-content {
+    margin-left: 200px; /* Space for the sidebar */
+    padding: 0px;
+}
+
 

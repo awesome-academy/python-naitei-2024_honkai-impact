@@ -14,8 +14,8 @@ def valkyrie(request):
     return HttpResponse(template.render(context, request))
 
 def introduction (request):
-    pass
-    return HttpResponse("Hello Introduction")
+    template = loader.get_template('introduction.html')
+    return HttpResponse(template.render())
 
 def overall_guide (request):
     pass
@@ -42,6 +42,7 @@ def abyss (request):
     return HttpResponse("Hello Abyss")
 
 def ma (request):
+    pass
     return HttpResponse("Hello Memorial Arena'")
 
 def details (request, id):
@@ -55,4 +56,5 @@ def details (request, id):
 def home (request):
     template = loader.get_template('home.html')
     return HttpResponse(template.render())
+
 
