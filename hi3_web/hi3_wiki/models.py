@@ -361,6 +361,9 @@ class WeaponType(models.Model):
     weapon_type_name = models.CharField(max_length=255, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.weapon_type_name}"
+
     class Meta:
         managed = False
         db_table = 'weapon_type'
@@ -387,3 +390,6 @@ class Weaponeffecttemplates(models.Model):
     class Meta:
         managed = False
         db_table = 'weaponeffecttemplates'
+
+
+        
