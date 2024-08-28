@@ -27,7 +27,6 @@ def team_build (request):
 
 def weapon (request):
     pass
-    return HttpResponse("Hello Weapons")
 
 def stigmata (request):
     pass
