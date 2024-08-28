@@ -1,0 +1,72 @@
+.weapon-container {
+    margin: 20px;
+}
+
+
+.search-bar {
+    width: 1000px;
+    margin-bottom: 20px; 
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+}
+
+.weapon-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
+}
+
+.weapon-item {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%; 
+    box-sizing: border-box; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.weapon-item:hover {
+    background-color: #3a3a3a;
+}
+
+.weapon-overview {
+    display: flex;
+    align-items: center;
+}
+
+.weapon-overview img {
+    width: flex;
+    padding-right: 20px;
+}
+
+.weapon-stats {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #a0a0a0;
+}
+
+.weapon-details {
+    display: block; /* Always show details from the start */
+    background-color: #3a3a3a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.weapon-details p {
+    padding: 1px;
+    line-height: 2;
+}
+
+
+.bold-large {
+    font-weight: bold;
+    font-size: 1.5em; /* Adjust this value as needed */
+}

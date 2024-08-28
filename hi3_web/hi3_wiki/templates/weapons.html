@@ -1,0 +1,39 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}Introduction{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/weapons.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="weapon-container">
+    <div class="search-bar">
+        <input type="text" placeholder="Search Weapons...">
+    </div>
+    <div class="weapon-list">
+        {% for rank in my_weaps_ranks %}
+        <div class="weapon-item">
+            <div class="weapon-overview">
+                <img src="{% static rank.image_url %}">
+                <img src="{% static rank.image_url_5 %}"> 
+                <div>
+                    <strong class="bold-large">{{ rank.weapon }}</strong><br>
+                    <p><span>ATK +{{ rank.attack4 }}</span> | <span>CRIT + {{ rank.crit4 }}</span></p>
+                    <p><span>ATK +{{ rank.attack5 }}</span> | <span>CRIT + {{ rank.crit5 }} (At 5★)</span> </p>
+                </div>
+            </div>
+            <div class="weapon-details">
+                <p><strong>{{ rank.effect_name_1 }}</strong><br></p>
+                <p>{{ rank.effect_description_1 }}</p>
+                <p><strong>{{ rank.effect_name_2 }}</strong><br></p>
+                <p>{{ rank.effect_description_2 }}</p>
+            </div>
+        </div>  
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+

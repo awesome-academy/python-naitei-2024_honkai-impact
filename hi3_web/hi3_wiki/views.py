@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.templatetags.static import static
 from django.http import HttpResponse
 from django.template import loader
 from .models import *
@@ -26,7 +27,14 @@ def team_build (request):
     return HttpResponse("Hello Team Build")
 
 def weapon (request):
-    pass
+    my_weaps = WeaponList.objects.all()
+    my_weaps_ranks = WeaponRanks.objects.all()
+    template = loader.get_template('weapons.html')
+    context = {
+        'my_weaps': my_weaps,
+        'my_weaps_ranks': my_weaps_ranks,
+    }
+    return HttpResponse(template.render(context, request))
 
 def stigmata (request):
     pass
@@ -56,4 +64,6 @@ def home (request):
     template = loader.get_template('home.html')
     return HttpResponse(template.render())
 
-
+def test_static(request):
+    url = static('img/Key_of_Radiance_4.jpg')
+    return HttpResponse(f'<img src="{url}" alt="Test Image">')
