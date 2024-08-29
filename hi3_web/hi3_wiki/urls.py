@@ -17,5 +17,7 @@ urlpatterns = [
     path('ma/', views.ma, name='Memorial Arena'),
 
     path('valkyrie/details/<int:id>', views.details, name='details'),
+
+    path('test-static/', views.test_static, name='test_static'),
 ]
 

@@ -335,25 +335,12 @@ class WeaponList(models.Model):
     weapon_name = models.CharField(db_column='Weapon_name', max_length=255, blank=True, null=True)  # Field name made lowercase.
     base_form = models.ForeignKey('self', models.DO_NOTHING, db_column='base_form_ID', blank=True, null=True)  # Field name made lowercase.
     pri_arm = models.ForeignKey('self', models.DO_NOTHING, db_column='Pri_Arm_ID', related_name='weaponlist_pri_arm_set', blank=True, null=True)  # Field name made lowercase.
-
+    def __str__(self):
+        return f"{self.weapon_name}"
     class Meta:
         managed = False
         db_table = 'weapon_list'
 
-
-class WeaponRanks(models.Model):
-    wrank_id = models.IntegerField(db_column='WRank_ID', primary_key=True)  # Field name made lowercase.
-    weapon = models.ForeignKey(WeaponList, models.DO_NOTHING, blank=True, null=True)
-    rank = models.IntegerField(blank=True, null=True)
-    attack = models.IntegerField(blank=True, null=True)
-    crit = models.IntegerField(blank=True, null=True)
-    effect_description_1 = models.CharField(max_length=255, blank=True, null=True)
-    effect_description_2 = models.CharField(max_length=255, blank=True, null=True)
-    effect_description_3 = models.CharField(max_length=255, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'weapon_ranks'
 
 
 class WeaponType(models.Model):
@@ -372,11 +359,11 @@ class WeaponType(models.Model):
 class Weaponeffectcomponents(models.Model):
     id = models.IntegerField(primary_key=True)
     weapon = models.ForeignKey(WeaponList, models.DO_NOTHING, blank=True, null=True)
-    level = models.IntegerField(blank=True, null=True)
     effect_template = models.ForeignKey('Weaponeffecttemplates', models.DO_NOTHING, blank=True, null=True)
     value_key = models.CharField(max_length=255, blank=True, null=True)
     value = models.FloatField(blank=True, null=True)
-
+    def __str__(self):
+        return f"{self.value_key} " + " - " + f"{self.effect_template}" + " - " + f"{self.weapon}"
     class Meta:
         managed = False
         db_table = 'weaponeffectcomponents'
@@ -385,11 +372,61 @@ class Weaponeffectcomponents(models.Model):
 class Weaponeffecttemplates(models.Model):
     id = models.IntegerField(primary_key=True)
     effect_name = models.CharField(max_length=255, blank=True, null=True)
-    template = models.CharField(max_length=255, blank=True, null=True)
-
+    template = models.TextField(max_length=65535, blank=True, null=True)
+    def __str__(self):
+        return f"{self.effect_name}"
     class Meta:
         managed = False
         db_table = 'weaponeffecttemplates'
 
+class WeaponRanks(models.Model):
+    wrank_id = models.IntegerField(db_column='WRank_ID', primary_key=True)  # Field name made lowercase.
+    weapon = models.ForeignKey(WeaponList, models.DO_NOTHING, blank=True, null=True)
+    attack4 = models.IntegerField(blank=True, null=True)
+    crit4 = models.IntegerField(blank=True, null=True)
+    attack5 = models.IntegerField(blank=True, null=True)
+    crit5 = models.IntegerField(blank=True, null=True)
+    effect_name_1 = models.TextField( blank=True, null=True)
+    effect_name_2 = models.TextField( blank=True, null=True)
+    effect_name_3 = models.TextField( blank=True, null=True)
+    effect_description_1 = models.TextField( blank=True, null=True)
+    effect_description_2 = models.TextField( blank=True, null=True)
+    effect_description_3 = models.TextField( blank=True, null=True)
+    image_url = models.TextField(blank=True, null=True)
+    image_url_5 = models.TextField(blank=True, null=True)
+    def update_effect_description(self, effect_description_field, template_id):
+        # Fetch the effect components related to the current weapon
+        components = Weaponeffectcomponents.objects.filter(weapon=self.weapon, effect_template__id=template_id)
+        
+        # Retrieve the effect template for the given effect_template ID
+        template = Weaponeffecttemplates.objects.filter(id=template_id).first()
+        
+        if not template:
+            print("No effect template found.")
+            return
 
+        # Create a dictionary of value keys and their corresponding values
+        values = {component.value_key: component.value for component in components}
+        
+        # Replace placeholders in the template with actual values
+        description = template.template
+        for key, value in values.items():
+            if value is not None:
+                placeholder = f'{{{key}}}'
+                description = description.replace(placeholder, str(value))
+        
+        # Update the specified effect description field with the processed description
+        setattr(self, effect_description_field, description)
+
+        if effect_description_field == 'effect_description_1':
+            self.effect_name_1 = template.effect_name
+        elif effect_description_field == 'effect_description_2':
+            self.effect_name_2 = template.effect_name
+        elif effect_description_field == 'effect_description_3':
+            self.effect_name_3 = template.effect_name
+        self.save()
+
+    class Meta:
+        managed = False
+        db_table = 'weapon_ranks'
         
