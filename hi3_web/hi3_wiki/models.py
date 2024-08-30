@@ -85,7 +85,10 @@ class Battlesuit(models.Model):
     weapon_type = models.ForeignKey('WeaponType', models.DO_NOTHING, db_column='Weapon_type_ID', blank=True, null=True)  # Field name made lowercase.
     dmg_type = models.ForeignKey('DmgType', models.DO_NOTHING, db_column='DMG_type_ID', blank=True, null=True)  # Field name made lowercase.
     element = models.ForeignKey('Elements', models.DO_NOTHING, db_column='Element_ID', blank=True, null=True)  # Field name made lowercase.
-
+    icon_url = models.TextField(blank=True, null=True)
+    image_url = models.TextField(blank=True, null=True)
+    def __str__(self):
+        return f"{self.battlesuit_name}"
     class Meta:
         managed = False
         db_table = 'battlesuit'
@@ -140,7 +143,8 @@ class DmgType(models.Model):
     dmg_type_id = models.IntegerField(db_column='DMG_type_ID', primary_key=True)  # Field name made lowercase.
     dmg_type_name = models.CharField(db_column='DMG_type_name', max_length=255, blank=True, null=True)  # Field name made lowercase.
     description = models.CharField(max_length=255, blank=True, null=True)
-
+    def __str__(self):
+        return f"{self.dmg_type_name}"
     class Meta:
         managed = False
         db_table = 'dmg_type'
@@ -150,7 +154,8 @@ class Elements(models.Model):
     element_id = models.IntegerField(db_column='Element_ID', primary_key=True)  # Field name made lowercase.
     elements_name = models.CharField(db_column='Elements_name', max_length=255, blank=True, null=True)  # Field name made lowercase.
     description = models.CharField(max_length=255, blank=True, null=True)
-
+    def __str__(self):
+        return f"{self.elements_name}"
     class Meta:
         managed = False
         db_table = 'elements'
@@ -323,7 +328,9 @@ class Valkyrie(models.Model):
     birthday_month = models.CharField(db_column='Birthday_month', max_length=255)  # Field name made lowercase.
     cn_va = models.CharField(db_column='CN_VA', max_length=255, blank=True, null=True)  # Field name made lowercase.
     jp_va = models.CharField(db_column='JP_VA', max_length=255, blank=True, null=True)  # Field name made lowercase.
-
+    image_url = models.TextField(blank=True, null=True)
+    def __str__(self):
+        return f"{self.valkyrie_name}"
     class Meta:
         managed = False
         db_table = 'valkyrie'
@@ -382,6 +389,7 @@ class Weaponeffecttemplates(models.Model):
 class WeaponRanks(models.Model):
     wrank_id = models.IntegerField(db_column='WRank_ID', primary_key=True)  # Field name made lowercase.
     weapon = models.ForeignKey(WeaponList, models.DO_NOTHING, blank=True, null=True)
+    weapon_name = models.TextField(blank=True, null=True)
     attack4 = models.IntegerField(blank=True, null=True)
     crit4 = models.IntegerField(blank=True, null=True)
     attack5 = models.IntegerField(blank=True, null=True)

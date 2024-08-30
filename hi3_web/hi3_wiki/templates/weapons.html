@@ -1,7 +1,8 @@
+<!-- templates/weapons.html -->
 {% extends 'master.html' %}
 {% load static %}
 
-{% block title %}Introduction{% endblock %}
+{% block title %}Weapons{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/weapons.css' %}">
@@ -9,19 +10,23 @@
 
 {% block content %}
 <div class="weapon-container">
-    <div class="search-bar">
-        <input type="text" placeholder="Search Weapons...">
-    </div>
+    <form method="get" action="{% url 'Weapons' %}">
+        <div class="search-bar">
+            {{ form.query.label_tag }} <!-- Optional: display the label -->
+            {{ form.query }} <!-- Renders the input field -->
+        </div>
+        <button type="submit">Search</button>
+    </form>
     <div class="weapon-list">
         {% for rank in my_weaps_ranks %}
         <div class="weapon-item">
             <div class="weapon-overview">
-                <img src="{% static rank.image_url %}">
-                <img src="{% static rank.image_url_5 %}"> 
+                <img src="{% static rank.image_url %}" alt="{{ rank.weapon.name }}">
+                <img src="{% static rank.image_url_5 %}" alt="{{ rank.weapon.name }} (5★)">
                 <div>
                     <strong class="bold-large">{{ rank.weapon }}</strong><br>
                     <p><span>ATK +{{ rank.attack4 }}</span> | <span>CRIT + {{ rank.crit4 }}</span></p>
-                    <p><span>ATK +{{ rank.attack5 }}</span> | <span>CRIT + {{ rank.crit5 }} (At 5★)</span> </p>
+                    <p><span>ATK +{{ rank.attack5 }}</span> | <span>CRIT + {{ rank.crit5 }} (At 5★)</span></p>
                 </div>
             </div>
             <div class="weapon-details">
@@ -31,9 +36,9 @@
                 <p>{{ rank.effect_description_2 }}</p>
             </div>
         </div>  
+        {% empty %}
+        <p>No weapons found.</p>
         {% endfor %}
     </div>
 </div>
 {% endblock %}
-
-

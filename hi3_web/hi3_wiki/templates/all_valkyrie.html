@@ -1,15 +1,53 @@
-{% extends "master.html" %}
+{% extends 'master.html' %}
+{% load static %}
 
-{% block title %}
-    List of all Valkyries
+{% block title %}All Valkyrie{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/valkyrie.css' %}">
 {% endblock %}
 
 {% block content %}
-<p><a href="/">HOME</a></p>
-<h1>Valkyrie</h1>
-    <ul>
-        {% for x in my_valks %}
-            <li><a href="details/{{ x.valkyrie_id }}">{{ x.valkyrie_name }} </a></li>
-        {% endfor %}
-    </ul>
+    <div class="valk-container">
+        <div class="valk-sidebar">
+            <img src="{% static 'img/ValkyrieOrder.png' %}" alt="Sidebar Top Image" class="sidebar-top-img">
+            <ul>
+                {% for x in my_valks %}
+                    <li><a href="/valkyrie/details/{{ x.valkyrie_id }}">{{ x.valkyrie_name }} </a></li>
+                {% endfor %}
+            </ul>
+            {% for x in my_valks %}
+                <input type="radio" name="valkyrie" id="msg{{ x.valkyrie_id }}" class="radio-btn">
+                <label for="msg{{ x.valkyrie_id }}" class="radio-label">
+                    {{ x.valkyrie_name }}
+                </label>
+            {% endfor %}
+        </div>
+        <div class="valk-main-content">
+            {% for x in my_valks %}
+                <div class="character-content" id="content{{ x.valkyrie_id }}">
+                    <div class="image-container">
+                        <div class="valkyrie-name">{{ x.valkyrie_name }}</div>
+                        <img src="{% static x.image_url %}" alt="{{ x.valkyrie_name }}">
+                    </div>
+                    <div class="valk-info">
+                        <p>Chinese Voice Actor: {{ x.cn_va }}</p>
+                        <p>Japanese Voice Actor: {{ x.jp_va }}</p>
+                        <p>Birthday: {{ x.birthday_day }} {{ x.birthday_month }}</p>
+                        <p>Available Battle Suit: </p>
+                        <div class="battlesuit-container">
+                            {% for suit in my_battlesuits %}
+                                {% if suit.valkyrie_name == x.valkyrie_name %}
+                                    <a href="/valkyrie/{{ suit.valkyrie_name }}/{{ suit.battlesuit_name }}" class="battlesuit-box">
+                                        <img src="{% static suit.icon_url %}" alt="{{ suit.battlesuit_name }}" class="battlesuit-icon">
+                                        <span class="battlesuit-name">{{ suit.battlesuit_name }}</span>
+                                    </a>
+                                {% endif %} 
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
